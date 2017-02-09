@@ -108,7 +108,7 @@ module.exports =
 	module.exports = {
 		"title": "Auth0 Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "1.0.1",
+		"version": "1.2",
 		"author": "test",
 		"description": "This is a Change mobile extension",
 		"type": "application",
