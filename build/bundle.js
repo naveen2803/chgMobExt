@@ -72,7 +72,7 @@ module.exports =
 	var metadata = __webpack_require__(5);
 
 	app.use(auth0({
-	  scopes: 'read:connections'
+	  scopes: 'read:connections read:users'
 	}));
 
 	app.get('/', function (req, res) {

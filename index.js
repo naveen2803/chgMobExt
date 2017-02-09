@@ -5,7 +5,7 @@ var app      = express();
 var metadata = require('./webtask.json');
 
 app.use(auth0({
-  scopes: 'read:connections'
+  scopes: 'read:connections read:users'
 }));
 
 app.get('/', function (req, res) {
