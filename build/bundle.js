@@ -108,9 +108,9 @@ module.exports =
 	module.exports = {
 		"title": "Auth0 Extension Boilerplate",
 		"name": "auth0-extension-boilerplate",
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"author": "test",
-		"description": "This is a Hello World extension test",
+		"description": "This is a Change mobile extension",
 		"type": "application",
 		"repository": "https://github.com/naveen2803/chgMobExt",
 		"keywords": [
