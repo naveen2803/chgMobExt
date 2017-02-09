@@ -106,13 +106,13 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"title": "Auth0 Extension Boilerplate",
-		"name": "auth0-extension-boilerplate",
+		"title": "Auth0 Extension for Change Mobile",
+		"name": "change-mobile-extension",
 		"version": "1.0.1",
 		"author": "test",
 		"description": "This is a Change mobile extension",
 		"type": "application",
-		"repository": "https://github.com/naveen2803/chgMobExt",
+		"repository": "https://github.com/naveen2803/chgMobExt/",
 		"keywords": [
 			"auth0",
 			"extension"
