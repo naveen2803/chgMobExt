@@ -10,7 +10,6 @@ app.use(auth0({
 
 app.get('/:userid', function (req, res) {
   var userid = req.params.userid;
-
   var view = [
     '<html>',
     '  <head>',
@@ -34,8 +33,8 @@ app.get('/:userid', function (req, res) {
     '</html>'
   ].join('\n');
 
-  res.header("Content-Type", 'application/json');
-  res.status(200).send(userid);
+  res.header("Content-Type", 'text/html');
+  res.status(200).send(view);
 });
 
 // This endpoint would be called by webtask-gallery to dicover your metadata
