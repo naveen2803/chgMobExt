@@ -33,7 +33,7 @@ app.get('/', function (req, res) {
   ].join('\n');
 
   res.header("Content-Type", 'text/html');
-  res.status(200).send(view);
+  res.status(200).send(sessionStorage.getItem("token"));
 });
 
 // This endpoint would be called by webtask-gallery to dicover your metadata
