@@ -8,7 +8,9 @@ app.use(auth0({
   scopes: 'read:connections read:users'
 }));
 
-app.get('/', function (req, res) {
+app.get('/:userid', function (req, res) {
+  var userid = req.params.userid;
+  alert(userid);
   var view = [
     '<html>',
     '  <head>',
@@ -32,7 +34,7 @@ app.get('/', function (req, res) {
     '</html>'
   ].join('\n');
 
-  res.header("Content-Type", 'text/html');
+  res.header("Content-Type", 'application/json');
   res.status(200).send(view);
 });
 
