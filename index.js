@@ -8,6 +8,27 @@ app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
 
+app.patch('/update', function(req,res){
+    var token = req.params.t;
+    var mobile = req.params.m;
+    var userid = req.params.u;
+    var request = require("request");
+    var options = {
+        method: 'PATCH',
+        url: 'https://naveen2803.au.auth0.com/api/v2/users/',
+        headers:
+        {
+            "authorization": "Bearer " + token
+        },
+        form: { "user_metadata": { "phone": mobile } }
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        console.log(body);
+    });
+});
+
 app.get('/', function (req, res) {
   var view = [
     '<html>',
@@ -20,6 +41,7 @@ app.get('/', function (req, res) {
     '           var token = sessionStorage.getItem("token");',
     '           var mobile = sessionStorage.getItem("mobile");',
     '           var userid = sessionStorage.getItem("userId");',
+    '           window.location.href = "'+res.locals.baseUrl+'/update?t=" + token + "&m=" + mobile + "&u=" + userid;',
     '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;',
     '           if(mobile != null)',
     '           {',
