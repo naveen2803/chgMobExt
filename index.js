@@ -8,7 +8,7 @@ app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
 
-app.patch('/update', function(req,res){
+app.get('/update', function(req,res){
     var token = req.params.t;
     var mobile = req.params.m;
     var userid = req.params.u;
