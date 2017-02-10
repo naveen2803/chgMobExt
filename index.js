@@ -8,7 +8,7 @@ app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
 
-app.get('/', function (req, res) {
+app.patch('/', function (req, res) {
   var view = [
     '<html>',
     '  <head>',
