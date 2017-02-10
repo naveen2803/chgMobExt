@@ -116,7 +116,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "1.2",
+		"version": "1.4",
 		"author": "test",
 		"description": "Change mobile extension",
 		"type": "application",
