@@ -43,6 +43,7 @@ app.get('/:userid', function (req, res) {
     '  <head>',
     '    <title>Auth0 Extension</title>',
     '    <script type="text/javascript">',
+    '       sessionStorage.setItem("userId", '+ userId +')',
     '       if (!sessionStorage.getItem("token")) {',
     '         window.location.href = "'+res.locals.baseUrl+'/login";',
     '       }',
