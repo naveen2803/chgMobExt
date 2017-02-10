@@ -75,27 +75,8 @@ module.exports =
 	    scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 	}));
 
-	app.get('/update', function (req, res) {
-	    var token = req.params.t;
-	    var mobile = req.params.m;
-	    var userid = req.params.u;
-	    var request = __webpack_require__(6);
-	    var options = {
-	        method: 'PATCH',
-	        url: 'https://naveen2803.au.auth0.com/api/v2/users/' + userid,
-	        headers: {
-	            "authorization": "Bearer " + token
-	        },
-	        form: { "user_metadata": { "phone": mobile } }
-	    };
-
-	    request(options, function (error, response, body) {
-	        if (error) throw new Error(error);
-	        console.log(body);
-	    });
-	});
 	/*
-	app.patch('/update', function(req,res){
+	app.get('/update', function(req,res){
 	    var token = req.params.t;
 	    var mobile = req.params.m;
 	    var userid = req.params.u;
@@ -116,8 +97,29 @@ module.exports =
 	    });
 	});
 	*/
+
+	app.patch('/update', function (req, res) {
+	    var token = req.params.t;
+	    var mobile = req.params.m;
+	    var userid = req.params.u;
+	    var request = __webpack_require__(6);
+	    var options = {
+	        method: 'PATCH',
+	        url: 'https://naveen2803.au.auth0.com/api/v2/users/' + userid,
+	        headers: {
+	            "authorization": "Bearer " + token
+	        },
+	        form: { "user_metadata": { "phone": mobile } }
+	    };
+
+	    request(options, function (error, response, body) {
+	        if (error) throw new Error(error);
+	        console.log(body);
+	    });
+	});
+
 	app.get('/', function (req, res) {
-	    var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>', '    <script type="text/javascript">', '       function updateMobile()', '       {', '           var token = sessionStorage.getItem("token");', '           var mobile = sessionStorage.getItem("mobile");', '           var userid = sessionStorage.getItem("userId");', '           window.location.href = "' + res.locals.baseUrl + '/update?t=" + token + "&m=" + mobile + "&u=" + userid;', '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;', '           if(mobile != null)', '           {', '               var settings = {', '                   "async": true,', '                   "crossDomain": true,', '                   "url": apiURL,', '                   "method": "PATCH",', '                   "headers": {', '                       "authorization": "Bearer " + token', '                   },', '                   "data": {', '                       "user_metadata": { "phone": mobile }', '                   }', '               }', '               $.ajax(settings).done(function(response) {', '                   alert("Mobile number changed")', '               });', '           }', '       }', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body onload="updateMobile();">', '    <script type="text/javascript">', '    </script>', '<form method="patch" action="update">', '</form>', '  </body>', '</html>'].join('\n');
+	    var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>', '    <script type="text/javascript">', '       function updateMobile1(){document.getElementById("myform").submit();}', '       function updateMobile()', '       {', '           var token = sessionStorage.getItem("token");', '           var mobile = sessionStorage.getItem("mobile");', '           var userid = sessionStorage.getItem("userId");', '           //window.location.href = "' + res.locals.baseUrl + '/update?t=" + token + "&m=" + mobile + "&u=" + userid;', '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;', '           if(mobile != null)', '           {', '               var settings = {', '                   "async": true,', '                   "crossDomain": true,', '                   "url": apiURL,', '                   "method": "PATCH",', '                   "headers": {', '                       "authorization": "Bearer " + token', '                   },', '                   "data": {', '                       "user_metadata": { "phone": mobile }', '                   }', '               }', '               $.ajax(settings).done(function(response) {', '                   alert("Mobile number changed")', '               });', '           }', '       }', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body onload="updateMobile1();">', '    <script type="text/javascript">', '    //document.getElementById("myform").submit();', '    </script>', '<form id="myform" method="patch" action="update">', '</form>', '  </body>', '</html>'].join('\n');
 
 	    res.header("Content-Type", 'text/html');
 	    res.status(200).send(view);
@@ -158,7 +160,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "3.2",
+		"version": "3.3",
 		"author": "test",
 		"description": "Change mobile extension",
 		"type": "application",

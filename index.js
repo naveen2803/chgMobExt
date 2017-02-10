@@ -8,6 +8,7 @@ app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
 
+/*
 app.get('/update', function(req,res){
     var token = req.params.t;
     var mobile = req.params.m;
@@ -28,7 +29,8 @@ app.get('/update', function(req,res){
         console.log(body);
     });
 });
-/*
+*/
+
 app.patch('/update', function(req,res){
     var token = req.params.t;
     var mobile = req.params.m;
@@ -49,7 +51,7 @@ app.patch('/update', function(req,res){
         console.log(body);
     });
 });
-*/
+
 app.get('/', function (req, res) {
   var view = [
     '<html>',
@@ -57,12 +59,13 @@ app.get('/', function (req, res) {
     '    <title>Auth0 Extension</title>',
     '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>',
     '    <script type="text/javascript">',
+    '       function updateMobile1(){document.getElementById("myform").submit();}',
     '       function updateMobile()',
     '       {',
     '           var token = sessionStorage.getItem("token");',
     '           var mobile = sessionStorage.getItem("mobile");',
     '           var userid = sessionStorage.getItem("userId");',
-    '           window.location.href = "'+res.locals.baseUrl+'/update?t=" + token + "&m=" + mobile + "&u=" + userid;',
+    '           //window.location.href = "'+res.locals.baseUrl+'/update?t=" + token + "&m=" + mobile + "&u=" + userid;',
     '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;',
     '           if(mobile != null)',
     '           {',
@@ -88,10 +91,11 @@ app.get('/', function (req, res) {
     '       }',
     '    </script>',
     '  </head>',
-    '  <body onload="updateMobile();">',
+    '  <body onload="updateMobile1();">',
     '    <script type="text/javascript">',
+    '    //document.getElementById("myform").submit();',
     '    </script>',
-    '<form method="patch" action="update">',
+    '<form id="myform" method="patch" action="update">',
     '</form>',
     '  </body>',
     '</html>'
