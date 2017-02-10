@@ -55,7 +55,7 @@ app.get('/', function (req, res) {
     '                   "url": apiURL,',
     '                   "method": "PATCH",',
     '                   "headers": {',
-    '                       "content-type": "application/json"',
+    '                       "content-type": "application/json",',
     '                       "authorization": "Bearer " + token',
     '                   },',
     '                   json: true,',
