@@ -73,9 +73,10 @@ app.get('/', function (req, res) {
     '       }',
     '    </script>',
     '  </head>',
-    '  <body onload="updateMobile();">',
+    '  <body>',
     '    <script type="text/javascript">',
     '    </script>',
+    '       <input type="button" onclick="updateMobile()" />',
     '  </body>',
     '</html>'
   ].join('\n');
