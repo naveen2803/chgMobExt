@@ -82,7 +82,7 @@ module.exports =
 	  var request = __webpack_require__(6);
 	  var options = {
 	    method: 'PATCH',
-	    url: 'https://naveen2803.au.auth0.com/api/v2/users/',
+	    url: 'https://naveen2803.au.auth0.com/api/v2/users/' + userid,
 	    headers: {
 	      "authorization": "Bearer " + token
 	    },
