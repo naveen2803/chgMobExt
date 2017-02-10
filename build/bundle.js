@@ -76,15 +76,16 @@ module.exports =
 	}));
 
 	app.get('/', function (req, res) {
-	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '    <p><strong>Token</strong></p>', '    <textarea rows="10" cols="100" id="token"></textarea>', '    <script type="text/javascript">', '       var token = sessionStorage.getItem("token");', '       if (token) {', '         document.getElementById("token").innerText = token;', '       }', '    </script>', '  </body>', '</html>'].join('\n');
+	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body onload="updateMobile()">', '    <script type="text/javascript">', '       function updateMobile()', '       {', '           var token = sessionStorage.getItem("token");', '           if(token != null)', '           {', '               var mobile = sessionStorage.getItem("mobile");', '               var userid = sessionStorage.getItem("userId");', '               var settings = {', '                   "async": true,', '                   "crossDomain": true,', '                   "url": "https://naveen2803.au.auth0.com/api/v2/users/" + userid,', '                   "method": "PATCH",', '                   "headers": {', '                   "authorization": "Bearer " + token', '               },', '               "data": {', '                   "user_metadata": { "phone": mobile }', '               }', '', '               $.ajax(settings).done(function(response) {', '                   document.getElementById("result").innerHTML = JSON.stringify(response, null, 4);', '               });', '           }', '       }', '    </script>', '  </body>', '</html>'].join('\n');
 
 	  res.header("Content-Type", 'application/json');
 	  res.status(200).send({ "hello": "world" });
 	});
 
-	app.get('/:userid', function (req, res) {
+	app.get('/:userid/:mobile', function (req, res) {
 	  var userId = req.params.userid;
-	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       sessionStorage.setItem("userId", "' + userId + '")', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '    <p><strong>Token</strong></p>', '    <textarea rows="10" cols="100" id="token"></textarea>', '    <script type="text/javascript">', '       var token = sessionStorage.getItem("token");', '       if (token) {', '         document.getElementById("token").innerText = token;', '       }', '    </script>', '  </body>', '</html>'].join('\n');
+	  var mobile = req.params.mobile;
+	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       sessionStorage.setItem("userId", "' + userId + '")', '       sessionStorage.setItem("mobile", "' + mobile + '")', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '  </body>', '</html>'].join('\n');
 
 	  res.header("Content-Type", 'text/html');
 	  res.status(200).send(view);
@@ -116,7 +117,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "1.6",
+		"version": "1.7",
 		"author": "test",
 		"description": "Change mobile extension",
 		"type": "application",
