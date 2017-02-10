@@ -75,7 +75,7 @@ module.exports =
 	    scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 	}));
 
-	app.patch('/update', function (req, res) {
+	app.get('/update', function (req, res) {
 	    function updateMobile() {
 	        var token = sessionStorage.getItem("token");
 	        var mobile = sessionStorage.getItem("mobile");
@@ -99,6 +99,7 @@ module.exports =
 	            });
 	        }
 	    }
+	    updateMobile();
 	});
 
 	app.get('/', function (req, res) {
@@ -143,7 +144,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "2.6",
+		"version": "2.7",
 		"author": "test",
 		"description": "Change mobile extension",
 		"type": "application",

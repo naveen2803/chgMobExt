@@ -8,7 +8,7 @@ app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
 
-app.patch('/update', function(req, res)
+app.get('/update', function(req, res)
 {
     function updateMobile()
        {
@@ -35,6 +35,7 @@ app.patch('/update', function(req, res)
                });
            }
        }
+       updateMobile();
 });
 
 app.get('/', function (req, res) {
