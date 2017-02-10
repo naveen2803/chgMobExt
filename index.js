@@ -8,18 +8,19 @@ app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
 
-app.patch('/', function (req, res) {
+app.get('/', function (req, res) {
   var view = [
     '<html>',
     '  <head>',
     '    <title>Auth0 Extension</title>',
     '    <script type="text/javascript">',
+    '       function callMe(){alert("I am called...")}',
     '       if (!sessionStorage.getItem("token")) {',
     '         window.location.href = "'+res.locals.baseUrl+'/login";',
     '       }',
     '    </script>',
     '  </head>',
-    '  <body>',
+    '  <body onload="callMe();">',
     '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>',
     '    <script type="text/javascript">',
     '       function updateMobile()',
@@ -47,7 +48,7 @@ app.patch('/', function (req, res) {
     '               });',
     '           }',
     '       }',
-    '       updateMobile();',
+    '       //updateMobile();',
     '    </script>',
     '  </body>',
     '</html>'
