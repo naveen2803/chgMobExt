@@ -20,6 +20,7 @@ app.get('/', function (req, res) {
     '    </script>',
     '  </head>',
     '  <body>',
+    '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>',
     '    <script type="text/javascript">',
     '       function updateMobile()',
     '       {',
