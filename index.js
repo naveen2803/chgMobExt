@@ -4,6 +4,7 @@ var Webtask  = require('webtask-tools');
 var app      = express();
 var metadata = require('./webtask.json');
 
+
 app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
@@ -31,26 +32,7 @@ app.get('/update', function(req,res){
 });
 */
 
-app.patch('/update', function(req,res){
-    var token = req.params.t;
-    var mobile = req.params.m;
-    var userid = req.params.u;
-    var request = require("request");
-    var options = {
-        method: 'PATCH',
-        url: 'https://naveen2803.au.auth0.com/api/v2/users/' + userid,
-        headers:
-        {
-            "authorization": "Bearer " + token
-        },
-        form: { "user_metadata": { "phone": mobile } }
-    };
 
-    request(options, function (error, response, body) {
-        if (error) throw new Error(error);
-        console.log(body);
-    });
-});
 
 app.get('/', function (req, res) {
   var view = [
@@ -65,7 +47,6 @@ app.get('/', function (req, res) {
     '           var token = sessionStorage.getItem("token");',
     '           var mobile = sessionStorage.getItem("mobile");',
     '           var userid = sessionStorage.getItem("userId");',
-    '           //window.location.href = "'+res.locals.baseUrl+'/update?t=" + token + "&m=" + mobile + "&u=" + userid;',
     '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;',
     '           if(mobile != null)',
     '           {',
@@ -76,7 +57,9 @@ app.get('/', function (req, res) {
     '                   "method": "PATCH",',
     '                   "headers": {',
     '                       "authorization": "Bearer " + token',
+    '                       "content-type": "application/json"',
     '                   },',
+    '                   json: true',
     '                   "data": {',
     '                       "user_metadata": { "phone": mobile }',
     '                   }',
@@ -93,10 +76,7 @@ app.get('/', function (req, res) {
     '  </head>',
     '  <body onload="updateMobile1();">',
     '    <script type="text/javascript">',
-    '    //document.getElementById("myform").submit();',
     '    </script>',
-    '<form id="myform" method="patch" action="update">',
-    '</form>',
     '  </body>',
     '</html>'
   ].join('\n');
