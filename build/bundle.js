@@ -84,7 +84,7 @@ module.exports =
 
 	app.get('/:userid', function (req, res) {
 	  var userId = req.params.userid;
-	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       sessionStorage.setItem("userId", ' + userId + ')', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '    <p><strong>Token</strong></p>', '    <textarea rows="10" cols="100" id="token"></textarea>', '    <script type="text/javascript">', '       var token = sessionStorage.getItem("token");', '       if (token) {', '         document.getElementById("token").innerText = token;', '       }', '    </script>', '  </body>', '</html>'].join('\n');
+	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       sessionStorage.setItem("userId", "' + userId + '")', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '    <p><strong>Token</strong></p>', '    <textarea rows="10" cols="100" id="token"></textarea>', '    <script type="text/javascript">', '       var token = sessionStorage.getItem("token");', '       if (token) {', '         document.getElementById("token").innerText = token;', '       }', '    </script>', '  </body>', '</html>'].join('\n');
 
 	  res.header("Content-Type", 'text/html');
 	  res.status(200).send(view);
@@ -116,7 +116,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "1.5",
+		"version": "1.6",
 		"author": "test",
 		"description": "Change mobile extension",
 		"type": "application",
