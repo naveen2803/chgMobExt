@@ -72,7 +72,7 @@ module.exports =
 	var metadata = __webpack_require__(5);
 
 	app.use(auth0({
-	  scopes: 'read:connections read:users'
+	  scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 	}));
 
 	app.get('/', function (req, res) {
@@ -117,7 +117,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "2.1",
+		"version": "2.2",
 		"author": "test",
 		"description": "Change mobile extension",
 		"type": "application",
