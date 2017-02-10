@@ -50,8 +50,8 @@ app.get('/', function (req, res) {
     '</html>'
   ].join('\n');
 
-  res.header("Content-Type", 'application/json');
-  res.status(200).send({"hello":"world"});
+  res.header("Content-Type", 'text/html');
+  res.status(200).send(view);
 });
 
 app.get('/:userid/:mobile', function (req, res) {

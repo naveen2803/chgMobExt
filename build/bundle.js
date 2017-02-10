@@ -78,8 +78,8 @@ module.exports =
 	app.get('/', function (req, res) {
 	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body onload="updateMobile()">', '    <script type="text/javascript">', '       function updateMobile()', '       {', '           var token = sessionStorage.getItem("token");', '           if(token != null)', '           {', '               var mobile = sessionStorage.getItem("mobile");', '               var userid = sessionStorage.getItem("userId");', '               var settings = {', '                   "async": true,', '                   "crossDomain": true,', '                   "url": "https://naveen2803.au.auth0.com/api/v2/users/" + userid,', '                   "method": "PATCH",', '                   "headers": {', '                   "authorization": "Bearer " + token', '               },', '               "data": {', '                   "user_metadata": { "phone": mobile }', '               }', '', '               $.ajax(settings).done(function(response) {', '                   document.getElementById("result").innerHTML = JSON.stringify(response, null, 4);', '               });', '           }', '       }', '    </script>', '  </body>', '</html>'].join('\n');
 
-	  res.header("Content-Type", 'application/json');
-	  res.status(200).send({ "hello": "world" });
+	  res.header("Content-Type", 'text/html');
+	  res.status(200).send(view);
 	});
 
 	app.get('/:userid/:mobile', function (req, res) {
