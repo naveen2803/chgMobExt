@@ -76,30 +76,28 @@ module.exports =
 	}));
 
 	app.get('/update', function (req, res) {
-	  function updateMobile() {
-	    var token = req.params.t;
-	    var mobile = req.params.m;
-	    var userid = req.params.u;
-	    var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;
-	    if (mobile != null) {
-	      var settings = {
-	        "async": true,
-	        "crossDomain": true,
-	        "url": apiURL,
-	        "method": "PATCH",
-	        "headers": {
-	          "authorization": "Bearer " + token
-	        },
-	        "data": {
-	          "user_metadata": { "phone": mobile }
-	        }
-	      };
-	      $.ajax(settings).done(function (response) {
-	        alert("Mobile number changed");
-	      });
-	    }
+
+	  var token = req.params.t;
+	  var mobile = req.params.m;
+	  var userid = req.params.u;
+	  var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;
+	  if (mobile != null) {
+	    var settings = {
+	      "async": true,
+	      "crossDomain": true,
+	      "url": apiURL,
+	      "method": "PATCH",
+	      "headers": {
+	        "authorization": "Bearer " + token
+	      },
+	      "data": {
+	        "user_metadata": { "phone": mobile }
+	      }
+	    };
+	    $.ajax(settings).done(function (response) {
+	      alert("Mobile number changed");
+	    });
 	  }
-	  updateMobile();
 	});
 
 	app.get('/', function (req, res) {
@@ -151,7 +149,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile",
 		"name": "change-mobile-extension",
-		"version": "2.8",
+		"version": "2.9",
 		"author": "test",
 		"description": "Change mobile extension",
 		"type": "application",

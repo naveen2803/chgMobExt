@@ -10,8 +10,7 @@ app.use(auth0({
 
 app.get('/update', function(req, res)
 {
-    function updateMobile()
-       {
+
            var token = req.params.t;
            var mobile = req.params.m;
            var userid = req.params.u;
@@ -34,8 +33,7 @@ app.get('/update', function(req, res)
                    alert("Mobile number changed")
                });
            }
-       }
-       updateMobile();
+       
 });
 
 app.get('/', function (req, res) {
