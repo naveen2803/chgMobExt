@@ -28,7 +28,28 @@ app.get('/update', function(req,res){
         console.log(body);
     });
 });
+/*
+app.patch('/update', function(req,res){
+    var token = req.params.t;
+    var mobile = req.params.m;
+    var userid = req.params.u;
+    var request = require("request");
+    var options = {
+        method: 'PATCH',
+        url: 'https://naveen2803.au.auth0.com/api/v2/users/' + userid,
+        headers:
+        {
+            "authorization": "Bearer " + token
+        },
+        form: { "user_metadata": { "phone": mobile } }
+    };
 
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        console.log(body);
+    });
+});
+*/
 app.get('/', function (req, res) {
   var view = [
     '<html>',
@@ -70,6 +91,8 @@ app.get('/', function (req, res) {
     '  <body onload="updateMobile();">',
     '    <script type="text/javascript">',
     '    </script>',
+    '<form method="patch" action="update">',
+    '</form>',
     '  </body>',
     '</html>'
   ].join('\n');
