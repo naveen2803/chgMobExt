@@ -92,7 +92,7 @@ app.get('/', function (req, res) {
     '                       "content-type": "application/json",',
     '                       "authorization": "Bearer " + token',
     '                   },',
-    '                   json: true',
+    '                   json: true,',
     '                   "data": {',
     '                       "user_metadata": { "phone": mobile }',
     '                   }',
