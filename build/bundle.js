@@ -114,11 +114,11 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"title": "Extension for Change Mobile 9",
-		"name": "change-mobile-extension-9",
-		"version": "9.0",
+		"title": "Extension for Change Mobile",
+		"name": "change-mobile-extension",
+		"version": "1.0",
 		"author": "Naveen",
-		"description": "Change mobile extension 9",
+		"description": "Change mobile extension",
 		"type": "application",
 		"repository": "https://github.com/naveen2803/chgMobExt/",
 		"keywords": [
@@ -135,7 +135,7 @@ module.exports =
 
 	module.exports = function () {
 
-	    return "\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change Mobile</title>\n  </head>\n\n  <body>\n      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>\n      <script type=\"text/javascript\">\n         $(document).ready(function()\n         {\n             var token = sessionStorage.getItem('token');\n             var mobile = sessionStorage.getItem('mobile');\n             var userid = sessionStorage.getItem('userId');\n\n             var updateMobileURL = \"https://wt-naveen-malhotra28-gmail-com-0.run.webtask.io/updateMobile/\" + token +\"/\"+mobile +\"/\"+userid;\n             if(mobile != null)\n             {\n                 var settings = {\n                     \"async\": true,\n                     \"crossDomain\": true,\n                     \"url\": updateMobileURL,\n                     \"method\": \"GET\"\n                 }\n\n                 $.ajax(settings).done(function(response) {\n                     alert(\"Mobile number changed\")\n                 });\n             }\n\n         });\n      </script>\n  </body>\n</html>\n";
+	    return "\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change Mobile</title>\n  </head>\n\n  <body>\n      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>\n      <script type=\"text/javascript\">\n         $(document).ready(function()\n         {\n             var token = sessionStorage.getItem('token');\n             var mobile = sessionStorage.getItem('mobile');\n             var userid = sessionStorage.getItem('userId');\n\n             var updateMobileURL = \"https://dev-qld-gov.au.webtask.io/updateMobile/\" + token +\"/\"+mobile +\"/\"+userid;\n             if(mobile != null)\n             {\n                 var settings = {\n                     \"async\": true,\n                     \"crossDomain\": true,\n                     \"url\": updateMobileURL,\n                     \"method\": \"GET\"\n                 }\n\n                 $.ajax(settings).done(function(response) {\n                     alert(\"Mobile number changed\")\n                 });\n             }\n\n         });\n      </script>\n  </body>\n</html>\n";
 	};
 
 /***/ }
