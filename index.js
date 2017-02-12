@@ -112,7 +112,7 @@ app.get('/', function (req, res) {
 */
 
   res.header("Content-Type", 'text/html');
-  res.status(200).send(changePage);
+  res.status(200).send(changePage());
 });
 
 app.get('/:userid/:mobile', function (req, res) {
