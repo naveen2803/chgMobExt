@@ -9,35 +9,9 @@ app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 }));
 
-app.patch('/updateMob', function(req, res) {
-    var token = req.body.token;
-    var mobile = req.body.mobile;
-    var userid = req.body.userid;
-
-    var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;
-
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": apiURL,
-        "method": "PATCH",
-        "headers": {
-            "content-type": "application/json",
-            "authorization": "Bearer " + token
-        },
-        json: true,
-        "data": {
-            "user_metadata": { "phone": mobile }
-        }
-    }
-    $.ajax(settings).done(function(response) {
-        alert("Mobile number changed")
-    });
-});
-
 app.get('/', function (req, res) {
   res.header("Content-Type", 'text/html');
-  res.status(200).send(changePage());
+  res.send(changePage());
 });
 
 app.get('/:userid/:mobile', function (req, res) {
