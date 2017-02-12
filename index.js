@@ -36,6 +36,7 @@ app.get('/update', function(req,res){
 
 app.get('/', function (req, res) {
   var view = [
+    '<!DOCTYPE html>',
     '<html>',
     '  <head>',
     '    <title>Auth0 Extension</title>',
@@ -116,6 +117,7 @@ app.get('/:userid/:mobile', function (req, res) {
   var userId = req.params.userid;
   var mobile = req.params.mobile;
   var view = [
+    '<!DOCTYPE html>',  
     '<html>',
     '  <head>',
     '    <title>Auth0 Extension</title>',
