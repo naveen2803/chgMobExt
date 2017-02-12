@@ -1,10 +1,10 @@
 {
-    "title": "Extension for Change Mobile 4",
-    "name": "change-mobile-extension-4",
-    "version": "4.0",
+    "title": "Extension for Change Mobile 5",
+    "name": "change-mobile-extension-5",
+    "version": "5.0",
     "author": "Naveen",
 
-    "description": "Change mobile extension 4",
+    "description": "Change mobile extension 5",
     "type": "application",
     "repository": "https://github.com/naveen2803/chgMobExt/",
     "keywords": [

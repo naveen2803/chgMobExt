@@ -16,7 +16,13 @@ return `
              var mobile = sessionStorage.getItem('mobile');
              var userid = sessionStorage.getItem('userId');
 
-             console.log(token);
+             $("#h_token").val(token);
+             $("#h_mobile").val(mobile);
+             $("#h_userid").val(userid);
+
+             document.getElementById('myform').submit();
+
+/*
              var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;
              if(mobile != null)
              {
@@ -38,8 +44,15 @@ return `
                      alert("Mobile number changed")
                  });
              }
+*/
+
          });
       </script>
+      <form name="myform" id="myform" action="updateMob" method="post">
+        <input type="hidden" id="h_token" name="token" />
+        <input type="hidden" id="h_userid" name="userid" />
+        <input type="hidden" id="h_mobile" name="mobile" />
+      </form>
   </body>
 </html>
 `;
