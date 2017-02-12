@@ -16,7 +16,7 @@ return `
              var mobile = sessionStorage.getItem('mobile');
              var userid = sessionStorage.getItem('userId');
 
-             var updateMobileURL = "https://wt-naveen-malhotra28-gmail-com-0.run.webtask.io/updateMobile/" + tokem +"/"+mobile +"/"+userid;
+             var updateMobileURL = "https://wt-naveen-malhotra28-gmail-com-0.run.webtask.io/updateMobile/" + token +"/"+mobile +"/"+userid;
              if(mobile != null)
              {
                  var settings = {
