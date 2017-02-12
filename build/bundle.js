@@ -114,11 +114,11 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"title": "Extension for Change Mobile 6",
-		"name": "change-mobile-extension-6",
-		"version": "6.0",
+		"title": "Extension for Change Mobile 8",
+		"name": "change-mobile-extension-8",
+		"version": "8.0",
 		"author": "Naveen",
-		"description": "Change mobile extension 6",
+		"description": "Change mobile extension 8",
 		"type": "application",
 		"repository": "https://github.com/naveen2803/chgMobExt/",
 		"keywords": [
@@ -135,7 +135,7 @@ module.exports =
 
 	module.exports = function () {
 
-	    return "\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change Mobile</title>\n  </head>\n\n  <body>\n      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>\n      <script type=\"text/javascript\">\n         $(document).ready(function()\n         {\n             var token = sessionStorage.getItem('token');\n             var mobile = sessionStorage.getItem('mobile');\n             var userid = sessionStorage.getItem('userId');\n\n             //$(\"#h_token\").val(token);\n             //$(\"#h_mobile\").val(mobile);\n             //$(\"#h_userid\").val(userid);\n\n             //document.getElementById('myform').submit();\n\n\n             var apiURL = \"https://naveen2803.au.auth0.com/api/v2/users/\" + userid;\n             if(mobile != null)\n             {\n                 var settings = {\n                     \"async\": true,\n                     \"crossDomain\": true,\n                     \"url\": apiURL,\n                     \"method\": \"PATCH\",\n                     \"headers\": {\n                         \"content-type\": \"application/json\",\n                         \"authorization\": \"Bearer \" + token\n                     },\n                     json: true,\n                     \"data\": {\n                         \"user_metadata\": { \"phone\": mobile }\n                     }\n                 }\n                 debugger;\n                 $.ajax(settings).done(function(response) {\n                     alert(\"Mobile number changed\")\n                 });\n             }\n\n\n         });\n      </script>\n      <!--<form name=\"myform\" id=\"myform\" action=\"updateMob\" method=\"post\">\n        <input type=\"hidden\" id=\"h_token\" name=\"token\" />\n        <input type=\"hidden\" id=\"h_userid\" name=\"userid\" />\n        <input type=\"hidden\" id=\"h_mobile\" name=\"mobile\" />\n      </form>-->\n  </body>\n</html>\n";
+	    return "\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change Mobile</title>\n  </head>\n\n  <body>\n      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>\n      <script type=\"text/javascript\">\n         $(document).ready(function()\n         {\n             var token = sessionStorage.getItem('token');\n             var mobile = sessionStorage.getItem('mobile');\n             var userid = sessionStorage.getItem('userId');\n\n             var updateMobileURL = \"https://wt-naveen-malhotra28-gmail-com-0.run.webtask.io/updateMobile/\" + tokem +\"/\"+mobile +\"/\"+userid;\n             if(mobile != null)\n             {\n                 var settings = {\n                     \"async\": true,\n                     \"crossDomain\": true,\n                     \"url\": updateMobileURL,\n                     \"method\": \"GET\"\n                 }\n\n                 $.ajax(settings).done(function(response) {\n                     alert(\"Mobile number changed\")\n                 });\n             }\n\n         });\n      </script>\n  </body>\n</html>\n";
 	};
 
 /***/ }

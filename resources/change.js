@@ -16,44 +16,23 @@ return `
              var mobile = sessionStorage.getItem('mobile');
              var userid = sessionStorage.getItem('userId');
 
-             //$("#h_token").val(token);
-             //$("#h_mobile").val(mobile);
-             //$("#h_userid").val(userid);
-
-             //document.getElementById('myform').submit();
-
-
-             var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;
+             var updateMobileURL = "https://wt-naveen-malhotra28-gmail-com-0.run.webtask.io/updateMobile/" + tokem +"/"+mobile +"/"+userid;
              if(mobile != null)
              {
                  var settings = {
                      "async": true,
                      "crossDomain": true,
-                     "url": apiURL,
-                     "method": "PATCH",
-                     "headers": {
-                         "content-type": "application/json",
-                         "authorization": "Bearer " + token
-                     },
-                     json: true,
-                     "data": {
-                         "user_metadata": { "phone": mobile }
-                     }
+                     "url": updateMobileURL,
+                     "method": "GET"
                  }
-                 debugger;
+
                  $.ajax(settings).done(function(response) {
                      alert("Mobile number changed")
                  });
              }
 
-
          });
       </script>
-      <!--<form name="myform" id="myform" action="updateMob" method="post">
-        <input type="hidden" id="h_token" name="token" />
-        <input type="hidden" id="h_userid" name="userid" />
-        <input type="hidden" id="h_mobile" name="mobile" />
-      </form>-->
   </body>
 </html>
 `;
