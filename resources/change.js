@@ -38,7 +38,7 @@ return `
                      alert("Mobile number changed")
                  });
              }
-         }
+         });
       </script>
   </body>
 </html>

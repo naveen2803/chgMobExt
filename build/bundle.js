@@ -215,7 +215,7 @@ module.exports =
 	module.exports = {
 		"title": "Extension for Change Mobile 2",
 		"name": "change-mobile-extension-2",
-		"version": "2.2",
+		"version": "2.4",
 		"author": "Naveen",
 		"description": "Change mobile extension 2",
 		"type": "application",
@@ -234,7 +234,7 @@ module.exports =
 
 	module.exports = function () {
 
-	    return "\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change Mobile</title>\n  </head>\n\n  <body>\n      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>\n      <script type=\"text/javascript\">\n         $(document).ready(function()\n         {\n             var token = sessionStorage.getItem('token');\n             var mobile = sessionStorage.getItem('mobile');\n             var userid = sessionStorage.getItem('userId');\n\n             console.log(token);\n             var apiURL = \"https://naveen2803.au.auth0.com/api/v2/users/\" + userid;\n             if(mobile != null)\n             {\n                 var settings = {\n                     \"async\": true,\n                     \"crossDomain\": true,\n                     \"url\": apiURL,\n                     \"method\": \"POST\",\n                     \"headers\": {\n                         \"content-type\": \"application/json\",\n                         \"authorization\": \"Bearer \" + token\n                     },\n                     json: true,\n                     \"data\": {\n                         \"user_metadata\": { \"phone\": mobile }\n                     }\n                 }\n                 $.ajax(settings).done(function(response) {\n                     alert(\"Mobile number changed\")\n                 });\n             }\n         }\n      </script>\n  </body>\n</html>\n";
+	    return "\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change Mobile</title>\n  </head>\n\n  <body>\n      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>\n      <script type=\"text/javascript\">\n         $(document).ready(function()\n         {\n             var token = sessionStorage.getItem('token');\n             var mobile = sessionStorage.getItem('mobile');\n             var userid = sessionStorage.getItem('userId');\n\n             console.log(token);\n             var apiURL = \"https://naveen2803.au.auth0.com/api/v2/users/\" + userid;\n             if(mobile != null)\n             {\n                 var settings = {\n                     \"async\": true,\n                     \"crossDomain\": true,\n                     \"url\": apiURL,\n                     \"method\": \"POST\",\n                     \"headers\": {\n                         \"content-type\": \"application/json\",\n                         \"authorization\": \"Bearer \" + token\n                     },\n                     json: true,\n                     \"data\": {\n                         \"user_metadata\": { \"phone\": mobile }\n                     }\n                 }\n                 $.ajax(settings).done(function(response) {\n                     alert(\"Mobile number changed\")\n                 });\n             }\n         });\n      </script>\n  </body>\n</html>\n";
 	};
 
 /***/ }

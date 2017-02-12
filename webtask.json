@@ -1,8 +1,9 @@
 {
     "title": "Extension for Change Mobile 2",
     "name": "change-mobile-extension-2",
-    "version": "2.3",
+    "version": "2.4",
     "author": "Naveen",
+
     "description": "Change mobile extension 2",
     "type": "application",
     "repository": "https://github.com/naveen2803/chgMobExt/",
