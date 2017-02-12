@@ -35,6 +35,7 @@ app.get('/update', function(req,res){
 
 
 app.get('/', function (req, res) {
+    /*
   var view = [
     '<!DOCTYPE html>',
     '<html>',
@@ -108,6 +109,7 @@ app.get('/', function (req, res) {
     '  </body>',
     '</html>'
   ].join('\n');
+*/
 
   res.header("Content-Type", 'text/html');
   res.status(200).send(changePage);
