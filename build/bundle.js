@@ -76,106 +76,7 @@ module.exports =
 	  scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
 	}));
 
-	/*
-	app.get('/update', function(req,res){
-	    var token = req.params.t;
-	    var mobile = req.params.m;
-	    var userid = req.params.u;
-	    var request = require("request");
-	    var options = {
-	        method: 'PATCH',
-	        url: 'https://naveen2803.au.auth0.com/api/v2/users/' + userid,
-	        headers:
-	        {
-	            "authorization": "Bearer " + token
-	        },
-	        form: { "user_metadata": { "phone": mobile } }
-	    };
-
-	    request(options, function (error, response, body) {
-	        if (error) throw new Error(error);
-	        console.log(body);
-	    });
-	});
-	*/
-
-	app.get('/', function (req, res) {
-	  /*
-	  var view = [
-	  '<!DOCTYPE html>',
-	  '<html>',
-	  '  <head>',
-	  '    <title>Auth0 Extension</title>',
-	  '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>',
-	  '    <script type="text/javascript">',
-	  '       function updateMobile()',
-	  '       {',
-	  '           var token = sessionStorage.getItem("token");',
-	  '           var mobile = sessionStorage.getItem("mobile");',
-	  '           var userid = sessionStorage.getItem("userId");',
-	  '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;',
-	  '           if(mobile != null)',
-	  '           {',
-	  '               var settings = {',
-	  '                   "async": true,',
-	  '                   "crossDomain": true,',
-	  '                   "url": apiURL,',
-	  '                   "method": "POST",',
-	  '                   "headers": {',
-	  '                       "content-type": "application/json",',
-	  '                       "authorization": "Bearer " + token',
-	  '                   },',
-	  '                   json: true,',
-	  '                   "data": {',
-	  '                       "user_metadata": { "phone": mobile }',
-	  '                   }',
-	  '               }',
-	  '               $.ajax(settings).done(function(response) {',
-	  '                   alert("Mobile number changed")',
-	  '               });',
-	  '           }',
-	  '       }',
-	  '       if (!sessionStorage.getItem("token")) {',
-	  '         window.location.href = "'+res.locals.baseUrl+'/login";',
-	  '       }',
-	  '    </script>',
-	  '  </head>',
-	  '  <body>',
-	  '    <script type="text/javascript">',
-	  '       function updateMobile()',
-	  '       {',
-	  '           var token = sessionStorage.getItem("token");',
-	  '           var mobile = sessionStorage.getItem("mobile");',
-	  '           var userid = sessionStorage.getItem("userId");',
-	  '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;',
-	  '           if(mobile != null)',
-	  '           {',
-	  '               var settings = {',
-	  '                   "async": true,',
-	  '                   "crossDomain": true,',
-	  '                   "url": apiURL,',
-	  '                   "method": "POST",',
-	  '                   "headers": {',
-	  '                       "content-type": "application/json",',
-	  '                       "authorization": "Bearer " + token',
-	  '                   },',
-	  '                   json: true,',
-	  '                   "data": {',
-	  '                       "user_metadata": { "phone": mobile }',
-	  '                   }',
-	  '               }',
-	  '               $.ajax(settings).done(function(response) {',
-	  '                   alert("Mobile number changed")',
-	  '               });',
-	  '           }',
-	  '       }',
-	  '    </script>',
-	  '       <input type="button" onclick="updateMobile()" />',
-	  '  </body>',
-	  '</html>'
-	  ].join('\n');
-	  */
-
+	app.patch('/', function (req, res) {
 	  res.header("Content-Type", 'text/html');
 	  res.status(200).send(changePage());
 	});
@@ -213,11 +114,11 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"title": "Extension for Change Mobile 3",
-		"name": "change-mobile-extension-3",
-		"version": "3.0",
+		"title": "Extension for Change Mobile 4",
+		"name": "change-mobile-extension-4",
+		"version": "4.0",
 		"author": "Naveen",
-		"description": "Change mobile extension 3",
+		"description": "Change mobile extension 4",
 		"type": "application",
 		"repository": "https://github.com/naveen2803/chgMobExt/",
 		"keywords": [
