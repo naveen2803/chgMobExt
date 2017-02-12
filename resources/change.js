@@ -17,7 +17,7 @@ return `
              var userid = sessionStorage.getItem('userId');
 
              console.log(token);
-             var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" `+userid+`;
+             var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;
              if(mobile != null)
              {
                  var settings = {
@@ -27,11 +27,11 @@ return `
                      "method": "POST",
                      "headers": {
                          "content-type": "application/json",
-                         "authorization": "Bearer "`+token+`
+                         "authorization": "Bearer " + token
                      },
                      json: true,
                      "data": {
-                         "user_metadata": { "phone": `+mobile+` }
+                         "user_metadata": { "phone": mobile }
                      }
                  }
                  $.ajax(settings).done(function(response) {
