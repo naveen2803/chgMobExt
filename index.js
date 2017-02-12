@@ -3,7 +3,7 @@ var auth0    = require('auth0-oauth2-express');
 var Webtask  = require('webtask-tools');
 var app      = express();
 var metadata = require('./webtask.json');
-
+var changePage = require('./resources/change');
 
 app.use(auth0({
   scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
@@ -110,14 +110,14 @@ app.get('/', function (req, res) {
   ].join('\n');
 
   res.header("Content-Type", 'text/html');
-  res.status(200).send(view);
+  res.status(200).send(changePage);
 });
 
 app.get('/:userid/:mobile', function (req, res) {
   var userId = req.params.userid;
   var mobile = req.params.mobile;
   var view = [
-    '<!DOCTYPE html>',  
+    '<!DOCTYPE html>',
     '<html>',
     '  <head>',
     '    <title>Auth0 Extension</title>',
