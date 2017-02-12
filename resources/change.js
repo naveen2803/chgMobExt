@@ -1,5 +1,3 @@
-var changeLogic = require('./changeLogic');
-
 module.exports = function(token, userid, mobile) {
 console.log("levelUpPage(token="+token+",userid="+userid+",mobile="+mobile+")");
 return `

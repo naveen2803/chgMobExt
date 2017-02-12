@@ -70,6 +70,7 @@ module.exports =
 	var Webtask = __webpack_require__(1);
 	var app = express();
 	var metadata = __webpack_require__(5);
+	var changePage = __webpack_require__(6);
 
 	app.use(auth0({
 	  scopes: 'read:connections read:users update:users update:current_user_metadata update:users_app_metadata'
@@ -99,16 +100,90 @@ module.exports =
 	*/
 
 	app.get('/', function (req, res) {
-	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>', '    <script type="text/javascript">', '       function updateMobile()', '       {', '           var token = sessionStorage.getItem("token");', '           var mobile = sessionStorage.getItem("mobile");', '           var userid = sessionStorage.getItem("userId");', '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;', '           if(mobile != null)', '           {', '               var settings = {', '                   "async": true,', '                   "crossDomain": true,', '                   "url": apiURL,', '                   "method": "POST",', '                   "headers": {', '                       "content-type": "application/json",', '                       "authorization": "Bearer " + token', '                   },', '                   json: true,', '                   "data": {', '                       "user_metadata": { "phone": mobile }', '                   }', '               }', '               $.ajax(settings).done(function(response) {', '                   alert("Mobile number changed")', '               });', '           }', '       }', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '    <script type="text/javascript">', '       function updateMobile()', '       {', '           var token = sessionStorage.getItem("token");', '           var mobile = sessionStorage.getItem("mobile");', '           var userid = sessionStorage.getItem("userId");', '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;', '           if(mobile != null)', '           {', '               var settings = {', '                   "async": true,', '                   "crossDomain": true,', '                   "url": apiURL,', '                   "method": "POST",', '                   "headers": {', '                       "content-type": "application/json",', '                       "authorization": "Bearer " + token', '                   },', '                   json: true,', '                   "data": {', '                       "user_metadata": { "phone": mobile }', '                   }', '               }', '               $.ajax(settings).done(function(response) {', '                   alert("Mobile number changed")', '               });', '           }', '       }', '    </script>', '       <input type="button" onclick="updateMobile()" />', '  </body>', '</html>'].join('\n');
+	  /*
+	  var view = [
+	  '<!DOCTYPE html>',
+	  '<html>',
+	  '  <head>',
+	  '    <title>Auth0 Extension</title>',
+	  '    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>',
+	  '    <script type="text/javascript">',
+	  '       function updateMobile()',
+	  '       {',
+	  '           var token = sessionStorage.getItem("token");',
+	  '           var mobile = sessionStorage.getItem("mobile");',
+	  '           var userid = sessionStorage.getItem("userId");',
+	  '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;',
+	  '           if(mobile != null)',
+	  '           {',
+	  '               var settings = {',
+	  '                   "async": true,',
+	  '                   "crossDomain": true,',
+	  '                   "url": apiURL,',
+	  '                   "method": "POST",',
+	  '                   "headers": {',
+	  '                       "content-type": "application/json",',
+	  '                       "authorization": "Bearer " + token',
+	  '                   },',
+	  '                   json: true,',
+	  '                   "data": {',
+	  '                       "user_metadata": { "phone": mobile }',
+	  '                   }',
+	  '               }',
+	  '               $.ajax(settings).done(function(response) {',
+	  '                   alert("Mobile number changed")',
+	  '               });',
+	  '           }',
+	  '       }',
+	  '       if (!sessionStorage.getItem("token")) {',
+	  '         window.location.href = "'+res.locals.baseUrl+'/login";',
+	  '       }',
+	  '    </script>',
+	  '  </head>',
+	  '  <body>',
+	  '    <script type="text/javascript">',
+	  '       function updateMobile()',
+	  '       {',
+	  '           var token = sessionStorage.getItem("token");',
+	  '           var mobile = sessionStorage.getItem("mobile");',
+	  '           var userid = sessionStorage.getItem("userId");',
+	  '           var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" + userid;',
+	  '           if(mobile != null)',
+	  '           {',
+	  '               var settings = {',
+	  '                   "async": true,',
+	  '                   "crossDomain": true,',
+	  '                   "url": apiURL,',
+	  '                   "method": "POST",',
+	  '                   "headers": {',
+	  '                       "content-type": "application/json",',
+	  '                       "authorization": "Bearer " + token',
+	  '                   },',
+	  '                   json: true,',
+	  '                   "data": {',
+	  '                       "user_metadata": { "phone": mobile }',
+	  '                   }',
+	  '               }',
+	  '               $.ajax(settings).done(function(response) {',
+	  '                   alert("Mobile number changed")',
+	  '               });',
+	  '           }',
+	  '       }',
+	  '    </script>',
+	  '       <input type="button" onclick="updateMobile()" />',
+	  '  </body>',
+	  '</html>'
+	  ].join('\n');
+	  */
 
 	  res.header("Content-Type", 'text/html');
-	  res.status(200).send(view);
+	  res.status(200).send(changePage);
 	});
 
 	app.get('/:userid/:mobile', function (req, res) {
 	  var userId = req.params.userid;
 	  var mobile = req.params.mobile;
-	  var view = ['<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       sessionStorage.setItem("userId", "' + userId + '")', '       sessionStorage.setItem("mobile", "' + mobile + '")', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '  </body>', '</html>'].join('\n');
+	  var view = ['<!DOCTYPE html>', '<html>', '  <head>', '    <title>Auth0 Extension</title>', '    <script type="text/javascript">', '       sessionStorage.setItem("userId", "' + userId + '")', '       sessionStorage.setItem("mobile", "' + mobile + '")', '       if (!sessionStorage.getItem("token")) {', '         window.location.href = "' + res.locals.baseUrl + '/login";', '       }', '    </script>', '  </head>', '  <body>', '  </body>', '</html>'].join('\n');
 
 	  res.header("Content-Type", 'text/html');
 	  res.status(200).send(view);
@@ -138,17 +213,28 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"title": "Extension for Change Mobile",
-		"name": "change-mobile-extension",
-		"version": "4.2",
-		"author": "test",
-		"description": "Change mobile extension",
+		"title": "Extension for Change Mobile 2",
+		"name": "change-mobile-extension-2",
+		"version": "1.0",
+		"author": "Naveen",
+		"description": "Change mobile extension 2",
 		"type": "application",
 		"repository": "https://github.com/naveen2803/chgMobExt/",
 		"keywords": [
 			"auth0",
 			"extension"
 		]
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = function (token, userid, mobile) {
+	    console.log("levelUpPage(token=" + token + ",userid=" + userid + ",mobile=" + mobile + ")");
+	    return "\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>Change Mobile</title>\n  </head>\n\n  <body>\n      <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>\n      <script type=\"text/javascript\">\n         $(document).ready(function()\n         {\n             var apiURL = \"https://naveen2803.au.auth0.com/api/v2/users/\" " + userid + ";\n             if(mobile != null)\n             {\n                 var settings = {\n                     \"async\": true,\n                     \"crossDomain\": true,\n                     \"url\": apiURL,\n                     \"method\": \"POST\",\n                     \"headers\": {\n                         \"content-type\": \"application/json\",\n                         \"authorization\": \"Bearer \"" + token + "\n                     },\n                     json: true,\n                     \"data\": {\n                         \"user_metadata\": { \"phone\": " + mobile + " }\n                     }\n                 }\n                 $.ajax(settings).done(function(response) {\n                     alert(\"Mobile number changed\")\n                 });\n             }\n         }\n      </script>\n  </body>\n</html>\n";
 	};
 
 /***/ }
