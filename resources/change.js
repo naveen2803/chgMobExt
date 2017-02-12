@@ -1,7 +1,5 @@
 module.exports = function() {
-    var token = sessionStorage.getItem('token');
-    var mobile = sessionStorage.getItem('mobile');
-    var userid = sessionStorage.getItem('userId');
+
 return `
 <!DOCTYPE html>
 <html>
@@ -14,7 +12,11 @@ return `
       <script type="text/javascript">
          $(document).ready(function()
          {
-             console.log("starting here...");
+             var token = sessionStorage.getItem('token');
+             var mobile = sessionStorage.getItem('mobile');
+             var userid = sessionStorage.getItem('userId');
+
+             console.log(token);
              var apiURL = "https://naveen2803.au.auth0.com/api/v2/users/" `+userid+`;
              if(mobile != null)
              {
