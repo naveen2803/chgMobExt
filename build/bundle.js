@@ -213,11 +213,11 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"title": "Extension for Change Mobile 2",
-		"name": "change-mobile-extension-2",
-		"version": "2.4",
+		"title": "Extension for Change Mobile 3",
+		"name": "change-mobile-extension-3",
+		"version": "3.0",
 		"author": "Naveen",
-		"description": "Change mobile extension 2",
+		"description": "Change mobile extension 3",
 		"type": "application",
 		"repository": "https://github.com/naveen2803/chgMobExt/",
 		"keywords": [
